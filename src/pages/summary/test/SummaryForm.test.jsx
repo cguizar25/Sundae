@@ -1,12 +1,12 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import SummaryForm from './SumaryForm';
+import SummaryForm from '../SummaryForm.jsx';
 
 //checkbox is unchecked by default
-test('Initial conditions', () ={
+test('Initial conditions', () => {
   render(<SummaryForm />);
 
-  const checkbox = screen.getByRole('checkbox', { name: 'I agree to Terms and Conditions' });
-  const button = screen.getByRole('button', { name: 'Confirm Order' });
+  const checkbox = screen.getByRole('checkbox', { name: /terms and conditions/i });
+  const button = screen.getByRole('button', { name: /confirm order/i });
 
   expect(checkbox).not.toBeChecked();
   expect(button).toBeDisabled();
@@ -16,8 +16,8 @@ test('Initial conditions', () ={
 test('checkbox enables button', () => {
   render(<SummaryForm />);
 
-  const checkbox = screen.getByRole('checkbox', { name: 'I agree to Terms and Conditions' });
-  const button = screen.getByRole('button', { name: 'Confirm Order' });
+  const checkbox = screen.getByRole('checkbox', { name: /terms and conditions/i });
+  const button = screen.getByRole('button', { name: /confirm order/i });
 
   fireEvent.click(checkbox);
   expect(button).toBeEnabled();
@@ -28,8 +28,8 @@ test('checkbox enables button', () => {
 test('unchecking disables button', () => {
   render(<SummaryForm />);
 
-  const checkbox = screen.getByRole('checkbox', { name: 'I agree to Terms and Conditions' });
-  const button = screen.getByRole('button', { name: 'Confirm Order' });
+  const checkbox = screen.getByRole('checkbox', { name: /terms and conditions/i });
+  const button = screen.getByRole('button', { name: /confirm order/i });
 
   fireEvent.click(checkbox);
   fireEvent.click(checkbox);
