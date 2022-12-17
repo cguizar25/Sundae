@@ -50,9 +50,9 @@ test("popover responds to hover", async () => {
 
   const termsAndConditions = screen.getByText(/terms and conditions/i);
   await user.hover(termsAndConditions);
-  const popover = screen.getByText(/no ice cream will actuall be delivered/i);
+  const popover = screen.getByText(/no ice cream will actually be delivered/i);
   expect(popover).toBeInTheDocument();
 
   await user.unhover(termsAndConditions);
-  expect(popover).no.toBeInTheDocument();
+  expect(popover).not.toBeInTheDocument();
 })
