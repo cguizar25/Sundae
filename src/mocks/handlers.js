@@ -8,5 +8,5 @@ export const handlers = [
         { name: "Vanilla", imagePath: "/images/vanilla.pngse" }
       ])
     )
-  });
+  })
 ]
