@@ -10,3 +10,5 @@ const AlertBanner = ({ message, variant }) => {
     </Alert>
   );
 }
+
+export default AlertBanner;
