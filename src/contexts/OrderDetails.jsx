@@ -6,14 +6,14 @@ const OrderDetails = createContext();
 export const useOrderDetails = () => {
   const contextValue = useContext(OrderDetails);
 
-  if (!context) {
+  if (!contextValue) {
     throw new Error ("useOrderDetails must be called within an OrderDetailsProvider");
   }
 
   return contextValue;
 }
 
-export const OrderDetailsProvider(props) {
+export const OrderDetailsProvider = (props) => {
   const [ optionCounts, setOptionCounts ] = useState({ scoops: {}, toppings: {} });
 
   const updateItemCount = (itemName, newItemCount, optionType) => {
@@ -37,10 +37,10 @@ export const OrderDetailsProvider(props) {
   }
 
   const total = {
-    scoops: calculateTotal("scoops");
-    toppings: calculateTotal("toppings");
+    scoops: calculateTotal("scoops"),
+    toppings: calculateTotal("toppings")
   }
 
-  const value = { optionCounts, updateItemCoun, resetOrder };
+  const value = { optionCounts, totals, updateItemCount, resetOrder };
   return <OrderDetails.Provider value={value} {...props} />;
 }

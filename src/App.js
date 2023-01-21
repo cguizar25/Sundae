@@ -1,10 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import Container from "react-bootstrap/Container";
+import OrderEntry from "./pages/entry/OrderEntry";
+import { OrderDetailsProvider } from "./contexts/OrderDetails";
 
 const App = () => {
   return (
-    'Hello'
-  )
+    <Container>
+      <OrderDetailsProvider>
+        <OrderEntry />
+      </OrderDetailsProvider>
+    </Container>
+  );
 }
 
 export default App;
