@@ -11,7 +11,7 @@ import { useOrderDetails } from "../../contexts/OrderDetails";
 export default function Options({ optionType }) {
   const [ items, setItems ] = useState([]);
   const [ error, setError ] = useState(false);
-  const { totals } = useOrderDetails();
+  const { total } = useOrderDetails();
 
   useEffect(() => {
     axios
@@ -25,8 +25,8 @@ export default function Options({ optionType }) {
   }
 
   const ItemComponent = optionType === "scoops" ? ScoopOption : ToppingOption;
-  const title = optionType[0].toUpperCase + optiontype.slice(1).toLowerCase();
-
+  const title = optionType[0].toUpperCase + optionType.slice(1).toLowerCase();
+  console.log(title)
   const optionItems = items.map((item) => (
     <ItemComponent
       key={item.name}
@@ -42,7 +42,7 @@ export default function Options({ optionType }) {
         {formatCurrency(pricePerItem[optionType])} each
       </p>
       <p>
-        {title} total: {formatCurrency(totals[optionType])}
+        {title} total: {formatCurrency(total[optionType])}
       </p>
       <Row>{optionItems}</Row>
     </>

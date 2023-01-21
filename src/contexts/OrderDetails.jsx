@@ -25,11 +25,11 @@ export const OrderDetailsProvider = (props) => {
   }
 
   const resetOrder = () => {
-    setOptionCounts({ scoops: {}, toppingsL  });
+    setOptionCounts({ scoops: {}, toppings: {} });
   }
 
   const calculateTotal = (optionType) => {
-    const countsArray = Object.values(optionCounts[optionTypes]);
+    const countsArray = Object.values(optionCounts[optionType]);
 
     const totalCount = countsArray.reduce((total, value) => total + value, 0);
 
@@ -41,6 +41,6 @@ export const OrderDetailsProvider = (props) => {
     toppings: calculateTotal("toppings")
   }
 
-  const value = { optionCounts, totals, updateItemCount, resetOrder };
+  const value = { optionCounts, total, updateItemCount, resetOrder };
   return <OrderDetails.Provider value={value} {...props} />;
 }
